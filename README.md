@@ -9,29 +9,35 @@ Syncing with GitHub
 Deploying on Azure
 
 # Steps
-Step 1: Create a fresh Angular project (local)
+
+## Step 1: Create a fresh Angular project (local)
 
 Verify that you are running at least node 6.9.x and npm 3.x.x by running node -v and npm -v in a terminal/console window. Older versions produce errors, but newer versions are fine.
+```
 npm install -g @angular/cli
 Go to the desired folder on your system and follow these steps:
 ng new my-app
 cd my-app
 ng serve --open
+```
 
-Step 2: Generate a Git repo and sync it with local project folder
+## Step 2: Generate a Git repo and sync it with local project folder
 
 Go to Visual Studio Code and open Integrated Terminal, it will directly open the directory of your current project (for example, my-app in our case)
 Go to GitHub, create a new repo with no special settings, and copy git part (second section usually) from the page:
 
 Paste this text in your project folder my-app or whatever you named it. 
 Git is now synced with your local repo. All you need to do is, 
+```
 git add .
 git commit -m “Your comment for this commit”
-git push origin master (or whichever branch you want this to be pushed)
+git push origin master ``` (or whichever branch you want this to be pushed)
 
-Step 3: Creating deployment script for Azure Windows cloud server.
+## Step 3: Creating deployment script for Azure Windows cloud server.
 
-Make a web.config file and paste the following code in it. The reason we do this is, IIS isn’t configured to Angular routing, it will redirect to index.html.
+### 1. Make a web.config file and paste the following code in it. The reason we do this is, IIS isn’t configured to Angular routing, it will redirect to index.html.
+
+```
 <?xml version="1.0" encoding="UTF-8"?>
    <configuration>
      <system.webServer>
@@ -49,14 +55,17 @@ Make a web.config file and paste the following code in it. The reason we do this
        </rewrite>
      </system.webServer>
    </configuration>
+```
 
-2. Run KuduScript commands to generate deploy.sh/deploy.cmd scripts as per your OS.
+### 2. Run KuduScript commands to generate deploy.sh/deploy.cmd scripts as per your OS.
+```
 npm install kuduscript -g
 kuduscript -y --node
+```
 
-3. Edit the ::Deployment section of the deploy.cmd file and replace with :
+### 3. Edit the ::Deployment section of the deploy.cmd file and replace with :
 
-
+```
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Deployment
 :: ----------
@@ -98,9 +107,9 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%/dist" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
  IF !ERRORLEVEL! NEQ 0 goto error
 )
+```
 
-
-Step 4: Setup Azure server and environment for CI and CD
+## Step 4: Setup Azure server and environment for CI and CD
 
 New -> Web + Mobile -> Web App
 
