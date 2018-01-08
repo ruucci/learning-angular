@@ -31,7 +31,8 @@ Git is now synced with your local repo. All you need to do is,
 ```
 git add .
 git commit -m “Your comment for this commit”
-git push origin master ``` (or whichever branch you want this to be pushed)
+git push origin master 
+```
 
 ## Step 3: Creating deployment script for Azure Windows cloud server.
 
@@ -112,19 +113,22 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 ## Step 4: Setup Azure server and environment for CI and CD
 
 New -> Web + Mobile -> Web App
-
-App name: Same as project name
-Resource Group name: Be sure to keep this different for all projects, it can screw things up.
-Windows, as I couldn’t figure out the Linux settings :*
-App Service plan, go for the Free one :*
-Pin to Dashboard.:* 
-Hit Create. This might take some time, once it is done, go to this resource, if you can’t find it, go to Dashboard and search for your app name.
+```
+1. App name: Same as project name
+2. Resource Group name: Be sure to keep this different for all projects, it can screw things up.
+3. Windows, as I couldn’t figure out the Linux settings :*
+4. App Service plan, go for the Free one :*
+5. Pin to Dashboard.:* 
+6. Hit Create. This might take some time, once it is done, go to this resource, if you can’t find it, go to Dashboard and search for your app name.
+```
 Once you are in this resource, select Deploy Options from the vertical menu items of this resource.
 It will give you an option of linking this app with your Cloud repo system.
 Select GitHub and enter credentials, it will give you a list of all the repos and their branches. Select the said project & branch. Hit Ok. This will take a while as this is the main building and running of the scripts that takes place.
 Hit Deploy Options again, it will show you run-time steps and scripts running. If this is successful. Hit Overview and then Browse on the web-app you created, to see the hosted website.
 
 # References
+```
 https://angular.io/guide/quickstart
 http://techbrij.com/azure-app-services-github-deploying-mean
 https://stackoverflow.com/questions/37487046/deploy-angular-2-with-azure-webapp
+```
