@@ -64,7 +64,7 @@ npm install kuduscript -g
 kuduscript -y --node
 ```
 
-### 3. Edit the ::Deployment section of the deploy.cmd file and replace with :
+### 3. Edit the 'Deployment' section of the deploy.cmd file and replace with :
 
 ```
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -123,8 +123,10 @@ New -> Web + Mobile -> Web App
 ```
 Once you are in this resource, select Deploy Options from the vertical menu items of this resource.
 It will give you an option of linking this app with your Cloud repo system.
-Select GitHub and enter credentials, it will give you a list of all the repos and their branches. Select the said project & branch. Hit Ok. This will take a while as this is the main building and running of the scripts that takes place.
-Hit Deploy Options again, it will show you run-time steps and scripts running. If this is successful. Hit Overview and then Browse on the web-app you created, to see the hosted website.
+Select GitHub and enter credentials, it will give you a list of all the repos and their branches. 
+Select the said project & branch. Hit Ok. This will take a while as this is the main building and running of the scripts that takes place.
+Hit Deploy Options again, it will show you run-time steps and scripts running. If this is successful. 
+Hit Overview and then Browse on the web-app you created, to see the hosted website.
 
 # References
 ```
